@@ -41,7 +41,14 @@ namespace Kalkylator
 
         private void operationButton_Click(object sender, EventArgs e) //Operational buttons ie add, sub, mul, div
         {
-            num = double.Parse(textBox1.Text, System.Globalization.CultureInfo.CurrentCulture);
+            if (num == 0)
+            {
+                if (textBox1.Text == "" || textBox1.Text == null && num == 0) return; //If textbox is empty no operations are to be made
+            }
+            if (num == 0)
+            {
+                num = double.Parse(textBox1.Text, System.Globalization.CultureInfo.CurrentCulture);
+            }
             button17.Enabled = true;
             //num = Convert.ToDouble(textBox1.Text);
             textBox1.Text = "";
@@ -76,8 +83,9 @@ namespace Kalkylator
                     {
                         if(textBox1.Text != "" && textBox1.Text != null)
                         {
-                            num = Convert.ToDouble(textBox1.Text);
-                            textBox1.Text = Convert.ToString(num *= -1);
+                            //num = Convert.ToDouble(textBox1.Text);
+                            double temp = Convert.ToDouble(textBox1.Text);
+                            textBox1.Text = Convert.ToString(temp *= -1);
                         }
                     }
 
